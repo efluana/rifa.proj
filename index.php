@@ -2,4 +2,4 @@
 
 include("conexao.php");
 
-echo "olá"; // conectando php ao banco de dados MYSQL
+echo "Olá"; // conectando php ao banco de dados MYSQL
