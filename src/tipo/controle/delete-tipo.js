@@ -23,19 +23,23 @@ $(document).ready(function() {
                 if (dado.tipo) == "success") {
                     $('.modal-body').load('src/tipo/visao/form-tipo.html'), function () {
                         $('#NOME').val(dado.dados.NOME)
-                        $('#ID').val(dadp.dados.ID)
+                        $('#ID').val(dado.dados.ID)
                     })
                     $('.btn-save').show()
                     $('.modal-tipo').modal('show')
                 } else {
                     Swal.fire({
-                        title:
-                        text:
-                        type:
+                        title: '',
+                        text:'',
+                        type:'',
                         confirmButtonText: 'OK'
                     })
-                }
-            }
+
+                    $('#table-tipo').DataTable().ajax.reload()
+                    }
+                })
+              }
+
+            }))
         })
     })
-})
