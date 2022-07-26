@@ -5,7 +5,7 @@ $(document).ready(function() {
         $('.modal-title').empty()
 
 
-        $('.modal-title').append('Adicionar novo vendedor de vendedor')
+        $('.modal-title').append('Adicionar novo vendedor')
 
         $('.modal-body').load('src/vendedor/view/form-vendedor.html')
 
