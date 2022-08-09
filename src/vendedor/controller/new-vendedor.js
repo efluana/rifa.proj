@@ -33,4 +33,4 @@ $(document).ready(function() {
         e.preventDefault()
         $('#modal-vendedor').modal('hide')
     })
-})
+}) 
