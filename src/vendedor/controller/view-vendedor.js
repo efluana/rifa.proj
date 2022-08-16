@@ -24,8 +24,27 @@ $(document).ready(function() {
                     $('.modal-body').load('src/vendedor/view/form-vendedor.html', function() {
                         $('#NOME').val(dado.dados.NOME)
                         $('#CELULAR').val(dado.dados.CELULAR)
+                        $('#LOGIN').attr('readonly', 'true')
+                        $('#SENHA').attr('readonly', 'true')
+                        $('#LOGIN').val(dado.dados.LOGIN)
+                        $('#SENHA').val(dado.dados.SENHA)
                         $('#NOME').attr('readonly', 'true')
                         $('#CELULAR').attr('readonly', 'true')
+                        $('#TIPO_ID').empty()
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: 'src/tipo/model/all-tipo.php',
+                            success: function(dados) {
+                                for (const result of dados) {
+                                    if (dado.dados.TIPO_ID == result.ID) {
+                                        $('#TIPO_ID').append(`<option value="${result.ID}">${result.DESCRICAO}</option>`)
+                                    }
+                                }
+                            }
+                        })
+                        $('#TIPO_ID').attr('readonly', 'true')
+
                     })
                     $('.btn-save').hide()
                     $('#modal-vendedor').modal('show')
@@ -41,4 +60,4 @@ $(document).ready(function() {
         })
 
     })
-}) 
+})
