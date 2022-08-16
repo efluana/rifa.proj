@@ -4,7 +4,7 @@ $(document).ready(function() {
         e.preventDefault()
 
         let dados = $('#form-login').serialize()
-        
+
         $.ajax({
             type: 'POST',
             dataType: 'json',
