@@ -1,16 +1,17 @@
-<?php
+<?php 
 
     session_start();
 
-    if(!isset($_SESSION['NOME']) && !isset($_SESSION['TIPO'])){
+    if(!isset($_SESSION['TIPO']) && !isset($_SESSION['NOME'])){
         $dados = array(
             'tipo' => 'error',
-            'mensagem' => 'Você não está autenticado no sistema.'
+            'mensagem' => 'Você não está autenticado para utilizar o sistema, realize o login.'
         );
-    }else{
+    } else {
         $dados = array(
             'tipo' => 'success',
-            'mensagem' => 'Seja bem vindo, '.$_SESSION['NOME']
+            'mensagem' => utf8_encode($_SESSION['NOME']),
+            'tipo_usuario' => $_SESSION['TIPO']
         );
     }
 

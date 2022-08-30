@@ -23,28 +23,31 @@ $(document).ready(function() {
                 if (dado.tipo == "success") {
                     $('.modal-body').load('src/vendedor/view/form-vendedor.html', function() {
                         $('#NOME').val(dado.dados.NOME)
-                        $('#CELULAR').val(dado.dados.CELULAR)
-                        $('#LOGIN').attr('readonly', 'true')
-                        $('#SENHA').attr('readonly', 'true')
-                        $('#LOGIN').val(dado.dados.LOGIN)
-                        $('#SENHA').val(dado.dados.SENHA)
                         $('#NOME').attr('readonly', 'true')
+                        $('#CELULAR').val(dado.dados.CELULAR)
                         $('#CELULAR').attr('readonly', 'true')
+                        $('#LOGIN').val(dado.dados.LOGIN)
+                        $('#LOGIN').attr('readonly', 'true')
+                        $('#SENHA').val(dado.dados.SENHA)
+                        $('#SENHA').attr('readonly', 'true')
                         $('#TIPO_ID').empty()
+
+                        var TIPO_ID = dado.dados.TIPO_ID
+
                         $.ajax({
-                            type: 'POST',
                             dataType: 'json',
+                            type: 'POST',
+                            assync: true,
                             url: 'src/tipo/model/all-tipo.php',
                             success: function(dados) {
                                 for (const result of dados) {
-                                    if (dado.dados.TIPO_ID == result.ID) {
-                                        $('#TIPO_ID').append(`<option value="${result.ID}">${result.DESCRICAO}</option>`)
+                                    if (result.ID == TIPO_ID) {
+                                        $('#TIPO_ID').append(`
+                                    <option value="${result.ID}">${result.NOME}</option>`)
                                     }
                                 }
                             }
                         })
-                        $('#TIPO_ID').attr('readonly', 'true')
-
                     })
                     $('.btn-save').hide()
                     $('#modal-vendedor').modal('show')

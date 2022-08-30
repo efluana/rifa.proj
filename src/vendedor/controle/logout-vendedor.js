@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $('#logout').click(function(e) {
+    $('.logout').click(function(e) {
         e.preventDefault()
         $.ajax({
             type: 'POST',
@@ -9,7 +9,7 @@ $(document).ready(function() {
             url: 'src/vendedor/model/logout-vendedor.php',
             success: function(dados) {
                 Swal.fire({
-                    title: 'Gerenciamento Rifas',
+                    title: 'E-RIFAS',
                     text: dados.mensagem,
                     icon: dados.tipo,
                     confirmButtonText: 'OK'
